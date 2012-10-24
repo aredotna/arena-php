@@ -1,4 +1,9 @@
 <?php
+function autoloader($class) {
+  include 'lib/' . $class . '.php';
+}
+spl_autoload_register('autoloader');
+
 /*
  * Arena PHP API interface
  * 
@@ -7,15 +12,6 @@
  *
 */
 
-function autoloader($class) {
-  include 'lib/' . $class . '.php';
-  // include 'vendor/' . $class . '.php';
-}
-spl_autoload_register('autoloader');
-
-/**
-* 
-*/
 class Arena
 {
   function __construct() {
@@ -23,16 +19,8 @@ class Arena
   }
   function get_channel($slug = null, $options = null){
     $request = new Request("channels/$slug", $options);
-    return $request->data;
+    return new Channel($request->data);
   }
-
-  function loop_channel_contents($channel, $options, $template){
-    if($options['sort'] == 'desc'){
-        $channel['contents'] = __::sortBy($channel['contents'], function($block) { return date('U',$block['updated_at']); });
-    }
-    __::each($channel['contents'], $template);
-  }
-
 
 }
 
