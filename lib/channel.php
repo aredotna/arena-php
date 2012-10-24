@@ -16,11 +16,23 @@ class Channel extends Arena
   
   }
 
-  function each_channel_item($options, $template){
-    if($options['sort'] == 'desc'){
-        $this->contents = __::sortBy($this->contents, function($block) { return date('U',$block['updated_at']); });
-    }
+  function each_channel_item($template) {
     __::each($this->contents, $template);
+  }
+
+  function set_sort_order($direction) {
+    switch ($direction) {
+      case 'asc':
+        $this->contents = __::sortBy($this->contents, function($block) { return -strtotime($block['connected_at']); });
+        break;
+      case 'desc':
+        $this->contents = __::sortBy($this->contents, function($block) { return strtotime($block['connected_at']); });
+        break;
+      case 'position':
+        $this->contents = __::sortBy($this->contents, function($block) { return $block['position']; });
+        break;
+    }
+
   }
 
 }
