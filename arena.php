@@ -23,7 +23,14 @@ class Arena
   }
   function get_channel($slug = null){
     $request = new Request("channels/$slug");
-    pretty_print_array($request->data);
+    return $request;
+  }
+
+  function loop_channel_contents($channel, $options, $template){
+    if($options['sort'] == 'desc'){
+        $channel->data['contents'] = __::sortBy($channel->data['contents'], function($block) { return date('U',$block['updated_at']); });
+    }
+    __::each($channel->data['contents'], $template);
   }
 }
 

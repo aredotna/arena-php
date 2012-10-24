@@ -4,6 +4,6 @@
 
 /* Your auth token */
 $config = array();
-$config['auth_token'] = '';
+$config['auth_token'] = 'HLWze1UqDbEvicyPv9dP';
 
 ?>
