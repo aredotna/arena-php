@@ -4,14 +4,15 @@
 * Arena::Request
 */
 
-class Request {
+class Request extends Arena
+{
 
-  function __construct($path, $args = null) {
+  function __construct($path, $options = null) {
     include 'settings.php';
 
-    $base_url = 'http://api.are.na/v2/';
-    $url = $base_url . $path;
-    
+    $base_url = 'http://localhost:3000/v2/';
+    $url = $base_url . $path . $this->set_url_params($options);
+
     $this->request = curl_init($url);
     curl_setopt($this->request, CURLOPT_RETURNTRANSFER, true);
     
@@ -26,6 +27,26 @@ class Request {
     if($this->data !== null){
       $this->data = json_decode($this->data, true);
       return $this;
+    }
+  }
+
+  function set_url_params ($options) {
+    if($options !== null) {
+      
+      $str = "?";
+      $idx = 1;
+      $options_length = count($options);
+
+      foreach ($options as $key => $value) {
+        $str .= "$key=$value";
+        if($idx !== $options_length){
+          $str .= "&";
+          $idx++;
+        }
+      }
+
+      return $str;
+
     }
   }
 

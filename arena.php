@@ -21,17 +21,19 @@ class Arena
   function __construct() {
     // empty for now
   }
-  function get_channel($slug = null){
-    $request = new Request("channels/$slug");
-    return $request;
+  function get_channel($slug = null, $options = null){
+    $request = new Request("channels/$slug", $options);
+    return $request->data;
   }
 
   function loop_channel_contents($channel, $options, $template){
     if($options['sort'] == 'desc'){
-        $channel->data['contents'] = __::sortBy($channel->data['contents'], function($block) { return date('U',$block['updated_at']); });
+        $channel['contents'] = __::sortBy($channel['contents'], function($block) { return date('U',$block['updated_at']); });
     }
-    __::each($channel->data['contents'], $template);
+    __::each($channel['contents'], $template);
   }
+
+
 }
 
 function pretty_print_array($array){
