@@ -10,7 +10,7 @@ class Request extends Arena
   function __construct($path, $options = null) {
     include 'settings.php';
 
-    $base_url = 'http://api.are.na/v2/';
+    $base_url = 'http://localhost:3000/v2/';
     $url = $base_url . $path . $this->set_url_params($options);
 
     $this->request = curl_init($url);
@@ -25,7 +25,8 @@ class Request extends Arena
     curl_close($this->request);
 
     if($this->data !== null){
-      $this->data = json_decode($this->data, true);
+      $data = mb_convert_encoding($this->data, 'UTF-8', 'ASCII,UTF-8,ISO-8859-1');
+      $this->data = json_decode($data, true);
       return $this;
     }
   }

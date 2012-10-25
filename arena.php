@@ -22,33 +22,14 @@ class Arena
     return new Channel($request->data);
   }
 
-}
+  function set_page() {
+    if(isset($_GET['page'])){
+      return $_GET['page'];
+    }else{
+      return 1;
+    }
+  }
 
-function pretty_print_array($array){
-  /*
-   * Print out an array for easily seeing keys/values 
-   */
-  __::each($array, function($key, $value) {
-    $key_type = (gettype($key));
-    $val_type = (gettype($value));
-    echo('<div style="text-align:left;">');
-
-    if($key_type == "array"){
-      echo ('<b>[' . $value . ']</b>');
-      echo ('<div style="margin-left:25px;">');
-      pretty_print_array($key); 
-      echo ('</div>');    
-    } else {
-      echo ('<div>');
-      echo ('<b>[' . $value . ']</b>');
-      echo (': ');
-      echo ($key);
-      echo ('<br />');
-      echo ('</div>');    
-    }    
-    echo("</div>");
-
-  });
 }
 
 ?>

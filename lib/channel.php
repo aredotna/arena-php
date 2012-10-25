@@ -23,9 +23,33 @@ class Channel extends Arena
     }
   }
 
-
   function each_item($template) {
     __::each($this->contents, $template);
+  }
+
+  function each_page($current_page, $template) {
+    if($this->total_pages > 1){
+      for ($i=1; $i < $this->total_pages; $i++) {
+        call_user_func($template, $i, $current_page);
+      }
+    }
+  }
+
+  function authors_to_sentence() {
+    if(count($this->collaborators)){
+      $str = $this->user['username'];
+      $collaborators = $this->collaborators;
+      $last_one = array_pop($collaborators);
+      if(count($collaborators)){
+        foreach ($collaborators as $collaborator) {
+          $str .= ", " . $collaborator['username'];
+        }
+      }
+      $str .= " and " . $last_one['username'];
+      return $str;
+    }else{
+      return $this->user['username'];
+    }
   }
 
   function set_sort_order($direction) {
@@ -42,7 +66,6 @@ class Channel extends Arena
     }
 
   }
-
 }
 
 
