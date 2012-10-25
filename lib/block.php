@@ -18,7 +18,8 @@ class Block extends Arena
   function is_text() {return $this->class == "Text";}
   function is_embed() {return $this->class == "Media";}
   function is_link() {return $this->class == "Link";}
-  function is_attachement() {return $this->class == "Attachment";}
+  function is_attachment() {return $this->class == "Attachment";}
+  function is_channel() {return $this->class == "Channel";}
   function image_url($type) {return $this->image[$type]['url'];}
 
   function relative_time() {

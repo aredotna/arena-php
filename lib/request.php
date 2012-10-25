@@ -10,7 +10,7 @@ class Request extends Arena
   function __construct($path, $options = null) {
     include 'settings.php';
 
-    $base_url = 'http://localhost:3000/v2/';
+    $base_url = 'http://api.are.na/v2/';
     $url = $base_url . $path . $this->set_url_params($options);
 
     $this->request = curl_init($url);
