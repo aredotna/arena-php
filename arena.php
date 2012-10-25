@@ -22,6 +22,11 @@ class Arena
     return new Channel($request->data);
   }
 
+  function get_block($id = null){
+    $request = new Request("blocks/$id");
+    return new Block($request->data);
+  }
+
   function set_page() {
     if(isset($_GET['page'])){
       return $_GET['page'];

@@ -64,7 +64,7 @@ $channel = $arena->get_channel($slug, array('page' => $page, 'per' => $per));
       <?php $channel->each_item(function($item) {?>
 
         <div class="item <?= $item->css_class()?>">
-          <h3><?= $item->generated_title ?></h3>
+          <h3><?= $item->generated_title ?> [<a href="permalink.php?id=<?= $item->id?>">#</a>]</h3>
           <div class="blog-content">
             
             <?php if($item->is_image()) { ?>
