@@ -34,7 +34,7 @@ class Arena
 
   function get_user_channels($slug = null){
     $request = new Request("users/$slug/channels");
-    return new User($request->data);
+    return new ChannelCollection($request->data);
   }
 
   function set_page() {
