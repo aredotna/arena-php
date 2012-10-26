@@ -8,6 +8,8 @@
 * [Block](#block)
 * [User](#user)
 
+## Setup
+
 ## Channel
 
 Retrieving a channel:
@@ -15,8 +17,6 @@ Retrieving a channel:
 ```
 $channel = $arena->get_channel($slug, array('page' => $page, 'per' => $per));
 ```
-
-## ChannelCollection
 
 ## Block
 
