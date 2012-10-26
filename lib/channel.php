@@ -23,6 +23,10 @@ class Channel extends Arena
     }
   }
 
+  function filter_unselected() {
+    $this->contents = __::filter($this->contents, function($block){ return $block->selected === true; });
+  }
+
   function each_item($template) {
     __::each($this->contents, $template);
   }
