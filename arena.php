@@ -27,6 +27,16 @@ class Arena
     return new Block($request->data);
   }
 
+  function get_user($slug = null){
+    $request = new Request("users/$slug");
+    return new User($request->data);
+  }
+
+  function get_user_channels($slug = null){
+    $request = new Request("users/$slug/channels");
+    return new ChannelCollection($request->data);
+  }
+
   function set_page() {
     if(isset($_GET['page'])){
       return $_GET['page'];

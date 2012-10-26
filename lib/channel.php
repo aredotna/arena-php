@@ -18,8 +18,10 @@ class Channel extends Arena
   }
 
   function set_blocks() {
-    for($i = 0; $i < count($this->contents); $i++){
-      $this->contents[$i] = new Block($this->contents[$i]);
+    if(isset($this->contents)){
+      for($i = 0; $i < count($this->contents); $i++){
+        $this->contents[$i] = new Block($this->contents[$i]);
+      }
     }
   }
 

@@ -8,7 +8,7 @@ class Request extends Arena
 {
 
   function __construct($path, $options = null) {
-    include 'settings.php';
+    include 'config.php';
 
     $base_url = 'http://api.are.na/v2/';
     $url = $base_url . $path . $this->set_url_params($options);
