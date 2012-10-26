@@ -9,7 +9,7 @@
 include '../../arena.php';
 
 $arena = new Arena();
-$user_slug = 'dena-yago'; // user slug (e.g. http://are.na/charles-broskoski)
+$user_slug = 'dena-yago'; // user slug (e.g. http://are.na/dena-yago)
 
 $user = $arena->get_user($user_slug);
 $channels = $arena->get_user_channels($user_slug);

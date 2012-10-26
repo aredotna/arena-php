@@ -10,6 +10,16 @@
 
 ## Setup
 
+Include the Arena class:
+```
+include '../../arena.php';
+```
+
+and set a new instance:
+```
+$arena = new Arena();
+```
+
 ## Channel
 
 Retrieving a channel:
