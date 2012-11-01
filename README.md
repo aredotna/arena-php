@@ -4,7 +4,6 @@
 
 * [Setup](#setup)
 * [Channel](#channel)
-* [ChannelCollection](#channelcollection)
 * [Block](#block)
 * [User](#user)
 
