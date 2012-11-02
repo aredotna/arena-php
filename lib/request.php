@@ -29,6 +29,13 @@ class Request extends Arena
       curl_setopt($this->request, CURLOPT_POSTFIELDS, $params_string);
     }
 
+    if($options['PUT']){
+      foreach($params as $key=>$value) { $params_string .= $key.'='.$value.'&'; }
+      rtrim($fields_string, '&');
+      curl_setopt($this->request, CURLOPT_CUSTOMREQUEST, "PUT");
+      curl_setopt($this->request, CURLOPT_POSTFIELDS, $params_string);
+    }
+
     $this->data = curl_exec($this->request);
     curl_close($this->request);
 

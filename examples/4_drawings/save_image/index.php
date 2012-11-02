@@ -25,6 +25,7 @@ $collage_slug = 'drawings';
     $arena = new Arena();
 
     $arena->create_block($collage_slug, array('source' => $url));
+    $arena->select_block($collage_slug, array('source' => $url));
 
   }
 ?>
