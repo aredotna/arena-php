@@ -1,0 +1,141 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Drawings</title>
+    <link rel="stylesheet" href="css/style.css">    
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.2/underscore-min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+</head>
+
+  <body>
+    
+    <div id="wrapper"> 
+      <div id="right">
+        <canvas id="easel" width="100%" height="100%"></canvas> 
+        <div id="surface">
+          <div id='tools' style="position:fixed;top:0;right:0;z-index:1000">
+            <h1><a href="#" class="save">Save</a></h1>
+            <h1><a href="#" class="clear">Clear</a></h1>
+          </div>
+        </div>     
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      var api_base = "http://api.are.na/v2/channels/";
+      var main_slug = "collage-app";
+
+      $(function() {
+
+        $("#easel").attr('width', $(document).width() + 1);
+        $("#easel").attr('height', $(document).height() + 1);
+
+        var canvas = document.getElementById("easel"),
+            ctx = canvas.getContext("2d"),
+            painting = false,
+            lastX = 0,
+            lastY = 0,
+            lineThickness = 40;
+
+        canvas.onmousedown = function(e) {
+            painting = true;
+            ctx.fillStyle = "#000";
+            lastX = e.pageX - this.offsetLeft;
+            lastY = e.pageY - this.offsetTop;
+        };
+
+        canvas.onmouseup = function(e){
+            painting = false;
+        }
+
+        canvas.onmousemove = function(e) {
+            if (painting) {
+                mouseX = e.pageX - this.offsetLeft;
+                mouseY = e.pageY - this.offsetTop;
+
+                // find all points between        
+                var x1 = mouseX,
+                    x2 = lastX,
+                    y1 = mouseY,
+                    y2 = lastY;
+
+
+                var steep = (Math.abs(y2 - y1) > Math.abs(x2 - x1));
+                if (steep){
+                    var x = x1;
+                    x1 = y1;
+                    y1 = x;
+
+                    var y = y2;
+                    y2 = x2;
+                    x2 = y;
+                }
+                if (x1 > x2) {
+                    var x = x1;
+                    x1 = x2;
+                    x2 = x;
+
+                    var y = y1;
+                    y1 = y2;
+                    y2 = y;
+                }
+
+                var dx = x2 - x1,
+                    dy = Math.abs(y2 - y1),
+                    error = 0,
+                    de = dy / dx,
+                    yStep = -1,
+                    y = y1;
+
+                if (y1 < y2) {
+                    yStep = 1;
+                }
+
+                lineThickness = 10 - Math.sqrt((x2 - x1) *(x2-x1) + (y2 - y1) * (y2-y1))/10;
+                if(lineThickness < 1){
+                    lineThickness = 1;   
+                }
+
+                for (var x = x1; x < x2; x++) {
+                    if (steep) {
+                        ctx.fillRect(y, x, lineThickness , lineThickness );
+                    } else {
+                        ctx.fillRect(x, y, lineThickness , lineThickness );
+                    }
+
+                    error += de;
+                    if (error >= 0.5) {
+                        y += yStep;
+                        error -= 1.0;
+                    }
+                }
+
+
+
+                lastX = mouseX;
+                lastY = mouseY;
+
+            }
+        }
+
+        $('#tools').delegate('.save', 'click', function(e){
+          var canvasData = document.getElementById('easel').toDataURL("image/png");
+          var ajax = new XMLHttpRequest();
+
+          ajax.open("POST",'save_image/',false);
+          ajax.setRequestHeader('Content-Type', 'application/upload');
+          ajax.send(canvasData); 
+          
+          $('#easel').addClass('success'); 
+          setTimeout(function(){$('#easel').removeClass('success')}, 1000);
+        });
+
+        $('#tools').delegate('.clear', 'click', function(e){
+          canvas.width = canvas.width;
+        });
+
+      });
+    </script>
+
+  </body>
+</html>

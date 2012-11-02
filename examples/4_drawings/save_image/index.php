@@ -6,7 +6,7 @@
  * (Canvas to POST code from: http://permadi.com/blog/2010/10/html5-saving-canvas-image-data-using-php-and-ajax/)
  */
 
-$collage_slug = 'collage-app';
+$collage_slug = 'drawings';
 
   if (isset($GLOBALS["HTTP_RAW_POST_DATA"])){
 

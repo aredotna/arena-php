@@ -1,0 +1,96 @@
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0; }
+
+.clearfix {
+  display: inline-block; }
+
+* html .clearfix {
+  height: 1%; 
+  font-family: sans-serif;
+}
+
+.clearfix {
+  display: block; }
+
+body {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px; 
+  font-family: sans-serif;
+}
+
+#wrapper {
+  position: fixed;
+  float: left;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  margin: 0px;
+  padding: 0px 0px;
+  background-color: white;
+  overflow: scroll; 
+}
+
+#right {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+  z-index: 10; 
+}
+
+#surface {
+  -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.25);
+  color: #5a5a5a;
+  width: 100%;
+  height: 100%;
+  display: block;
+  float: left;
+  overflow: scroll;
+  background-color: white; 
+}
+#easel{
+  -moz-transition-property: background-color;  /* FF4+ */
+  -moz-transition-duration: .8s;
+  -webkit-transition-property: background-color;  /* Saf3.2+, Chrome */
+  -webkit-transition-duration: .8s;
+  -o-transition-property: background-color;  /* Opera 10.5+ */
+  -o-transition-duration: .8s;
+  -ms-transition-property: background-color;  /* IE10? */
+  -ms-transition-duration: .8s;
+  transition-property: background-color;  /* Standard */
+  transition-duration: .8s;
+  background-color:#fff;
+}
+#easel.success{background-color:#0f0;}
+#tools{
+  margin: 15px;
+}
+h1{
+  margin:15px;
+}
+h1 a{
+  text-decoration: none;
+  color:#000;
+  padding:4px;
+}
+a:hover{
+  text-decoration: underline;
+}
