@@ -7,7 +7,7 @@
 class Request extends Arena
 {
 
-  function __construct($path, $options = null) {
+  function __construct($path, $options = null, $params = null) {
     include 'config.php';
 
     $base_url = 'http://api.are.na/v2/';
@@ -19,6 +19,14 @@ class Request extends Arena
     // set X-AUTH-TOKEN if defined
     if ($config['auth_token'] !== ''){
       curl_setopt($this->request, CURLOPT_HTTPHEADER, array('X-AUTH-TOKEN: '.$config['auth_token']));
+    }
+
+    // set POST data
+    if($options['POST']){
+      foreach($params as $key=>$value) { $params_string .= $key.'='.$value.'&'; }
+      rtrim($fields_string, '&');
+      curl_setopt($this->request, CURLOPT_POST, count($params));
+      curl_setopt($this->request, CURLOPT_POSTFIELDS, $params_string);
     }
 
     $this->data = curl_exec($this->request);

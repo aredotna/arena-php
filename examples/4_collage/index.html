@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="css/style.css">    
     <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.2/underscore-min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="js/getimagedata.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/ocanvas/2.2.2/ocanvas.min.js"></script>
 </head>
 
@@ -22,13 +23,13 @@
         </ul>
       </div>
       <div id="right">
+        <canvas id="easel" width="100%" height="100%"></canvas> 
         <div id="surface">
           <span id='patient'></span>
-          <span id='doctor'></span>
-        </div>
-        <canvas id="easel" width="100%" height="100%">
-
-        </div>      
+          <div id='tools' style="position:fixed;top:0;right:0;z-index:1000">
+            <a href="#" class="save">Save to Channel</a>
+          </div>
+        </div>     
       </div>
     </div>
 
@@ -69,7 +70,7 @@
             success: function(data){
               _.each(data.contents, function(block){
                 if(block.class == 'Image'){
-                  $("#palette").append(_.template(media_template, block));
+                  $("#palette").html(_.template(media_template, block));
                 }
               });
             }
@@ -82,7 +83,8 @@
             img_w = $(this).width();
             img_h = $(this).height();
 
-            image_url = $(e.target).attr('src');
+            image_url = "proxy.php?pic=" + encodeURIComponent(e.target.src.substr(7));
+
             image_obj = canvas.display.image({
               x: 0,
               y: 0,
@@ -93,6 +95,15 @@
 
             canvas.addChild(image_obj);
             image_obj.dragAndDrop({changeZindex: true});
+        });
+
+        $('#tools').delegate('.save', 'click', function(e){
+          var canvasData = document.getElementById('easel').toDataURL("image/png");
+          console.log('canvasData', canvasData);
+          var ajax = new XMLHttpRequest();
+          ajax.open("POST",'save_image/',false);
+          ajax.setRequestHeader('Content-Type', 'application/upload');
+          ajax.send(canvasData);  
         });
 
       });

@@ -37,6 +37,11 @@ class Arena
     return new ChannelCollection($request->data);
   }
 
+  function create_block($channel_slug, $block_attrs = null){
+    $request = new Request("channels/$channel_slug/blocks", array('POST' => true), $block_attrs);
+    return new Block($request->data);
+  }
+
   function set_page() {
     if(isset($_GET['page'])){
       return $_GET['page'];
