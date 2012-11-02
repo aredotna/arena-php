@@ -64,13 +64,14 @@
           $('.selected').removeClass('selected');
           $(e.target).addClass('selected');
 
+          $("#palette").html('');
           $.ajax({
             url: api_base + slug,
             dataType: "json",
             success: function(data){
               _.each(data.contents, function(block){
                 if(block.class == 'Image'){
-                  $("#palette").html(_.template(media_template, block));
+                  $("#palette").append(_.template(media_template, block));
                 }
               });
             }
