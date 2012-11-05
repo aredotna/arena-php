@@ -32,7 +32,69 @@ Channels are containers for blocks (and sometimes other channels) with permissio
 ### Retrieving a channel:
 
 ```
-$channel = $arena->get_channel($slug, array('page' => $page, 'per' => $per));
+<?php $channel = $arena->get_channel($slug, array('page' => $page, 'per' => $per)); ?>
+```
+returns:
+
+```
+{
+id: 1546,
+title: "blog.are.na",
+created_at: "2012-03-12T15:13:27Z",
+updated_at: "2012-11-03T22:28:25Z",
+published: true,
+open: false,
+collaboration: true,
+slug: "blog-are-na",
+length: 45,
+kind: "default",
+status: "closed",
+user_id: 15,
+contents_updated_at: "2012-10-23T16:30:50Z",
+class: "Channel",
+base_class: "Channel",
+user: {
+  id: 15,
+  slug: "charles-broskoski",
+  username: "Charles Broskoski",
+  first_name: "Charles",
+  last_name: "Broskoski",
+  full_name: "Charles Broskoski",
+  avatar: "http://gravatar.com/avatar/c6ea2918c7da408451f528255632b58d.png?s=40&d=mm&r=R&d=http://s3.amazonaws.com/arena_assets/assets/interface/missing.png",
+  email: "broskoski@gmail.com",
+  channel_count: 75,
+  following_count: 419,
+  profile_id: 111,
+  follower_count: 157,
+  class: "User",
+  initials: "CB"
+},
+total_pages: 1,
+current_page: 1,
+per: 1000,
+follower_count: 7,
+contents: [
+  ....
+],
+collaborators: [
+  {
+    id: 17,
+    slug: "damon-zucconi",
+    username: "Damon Zucconi",
+    first_name: "Damon",
+    last_name: "Zucconi",
+    full_name: "Damon Zucconi",
+    avatar: "http://gravatar.com/avatar/649c4301c6c5c9605fbf87e003427767.png?s=40&d=mm&r=R&d=http://s3.amazonaws.com/arena_assets/assets/interface/missing.png",
+    email: "mail@damonzucconi.com",
+    channel_count: 117,
+    following_count: 283,
+    profile_id: 105,
+    follower_count: 148,
+    class: "User",
+    initials: "DZ"
+  }
+]
+}
 ```
 
 The Channel class can (and should) be extended to serve particular needs and goals, but there are a few convience methods included in this extremely early version of the library.
@@ -87,7 +149,93 @@ To check the specific type of block in an item loop (or otherwise) use these met
 You can also retrieve specific blocks from the API. This can be used to handle permalinking of specific content.
 
 ```
-<?php $arena->get_block($id) ?>
+<?php $arena->get_block($id) ?> # $id = 1000
+```
+returns:
+```
+{
+id: 1000,
+title: "caveman time + globalization",
+updated_at: "2011-12-13T23:42:51Z",
+created_at: "2011-08-13T00:22:29Z",
+state: "available",
+comment_count: 0,
+generated_title: "caveman time + globalization",
+class: "Image",
+base_class: "Block",
+content: "caveman time and globalization",
+content_html: "<p>caveman time and globalization</p> ",
+description: "caveman time and globalization",
+description_html: "<p>caveman time and globalization</p> ",
+image: {
+  filename: "mcd-billboard.gif",
+  content_type: "image/gif",
+  updated_at: "2011-08-13T00:22:28Z",
+  thumb: {
+    url: "http://s3.amazonaws.com/arena_images/1000/thumb_mcd-billboard.gif"
+  },
+  display: {
+    url: "http://s3.amazonaws.com/arena_images/1000/display_mcd-billboard.gif"
+  },
+  original: {
+    url: "http://s3.amazonaws.com/arena_images/1000/original_mcd-billboard.gif",
+    file_size: 48328,
+    file_size_display: "47.2 KB"
+  }
+},
+user: {
+  id: 53,
+  slug: "sun-an",
+  username: "sun an",
+  first_name: "sun",
+  last_name: "an",
+  full_name: "sun an",
+  avatar: "http://gravatar.com/avatar/5dc858da6a9f2c8f20757e36119ef827.png?s=40&d=mm&r=R&d=http://s3.amazonaws.com/arena_assets/assets/interface/missing.png",
+  email: "mail@sun-an.com",
+  channel_count: 8,
+  following_count: 5,
+  profile_id: 298,
+  follower_count: 15,
+  class: "User",
+  initials: "sa"
+},
+connections: [
+  {
+    id: 298,
+    title: "sun an",
+    created_at: "2011-08-13T00:17:45Z",
+    updated_at: "2012-01-11T21:22:30Z",
+    published: true,
+    open: true,
+    collaboration: false,
+    slug: "sun-an",
+    length: 3,
+    kind: "profile",
+    status: "public",
+    user_id: 53,
+    contents_updated_at: "2012-01-11T21:22:30Z",
+    class: "Channel",
+    base_class: "Channel"
+  },
+  {
+    id: 208,
+    title: "Gideon Yago",
+    created_at: "2011-08-03T19:14:00Z",
+    updated_at: "2012-01-11T21:22:29Z",
+    published: true,
+    open: true,
+    collaboration: false,
+    slug: "gideon-yago",
+    length: 1,
+    kind: "profile",
+    status: "public",
+    user_id: 29,
+    contents_updated_at: "2012-01-11T21:22:29Z",
+    class: "Channel",
+    base_class: "Channel"
+  }
+]
+}
 ```
 
 ## User
