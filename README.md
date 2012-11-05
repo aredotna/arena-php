@@ -66,6 +66,63 @@ For the sake of simplicity, contents in a channel are all set to class 'Block'. 
 
 ## Block
 
+For now block methods are mostly for template simplicity, this class should also be extended to accomplish specific goals.
 
+### Block classes
+
+To check the specific type of block in an item loop (or otherwise) use these methods (is_image(), is_text(), is_embed(), is_link(), is_attachment(), is_channel()) like so:
+
+```
+<?php $channel->each_item(function($item) {?>
+  <?php if($item->is_image()) { ?>
+    <a class='img' href="<?= $item->image_url('original') ?>">
+      <img src="<?= $item->image_url('display') ?>" />
+    </a>
+  <?php } ?>
+<?php } ?>
+```
+
+### Retrieving a specific Block
+
+You can also retrieve specific blocks from the API. This can be used to handle permalinking of specific content.
+
+```
+<?php $arena->get_block($id) ?>
+```
 
 ## User
+
+### Retrieving a specific user's info
+
+```
+<?php $arena->get_user($user_slug) ?> # $user_slug = 'charles-broskoski' 
+```
+
+returns: 
+
+```
+{
+id: 15,
+slug: "charles-broskoski",
+username: "Charles Broskoski",
+first_name: "Charles",
+last_name: "Broskoski",
+full_name: "Charles Broskoski",
+avatar: "http://gravatar.com/avatar/c6ea2918c7da408451f528255632b58d.png?s=40&d=mm&r=R&d=http://s3.amazonaws.com/arena_assets/assets/interface/missing.png",
+email: "broskoski@gmail.com",
+channel_count: 76,
+following_count: 420,
+profile_id: 111,
+follower_count: 157,
+class: "User",
+initials: "CB"
+}
+```
+
+### Retrieving a user's channel list
+
+```
+<?php $arena->get_user_channels($user_slug)?>
+```
+
+This returns an object that contains an array of Channel objects (note: these channels do not have block content included in them, only base representations of the channels are returned).

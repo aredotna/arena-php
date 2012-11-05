@@ -11,7 +11,6 @@ include '../../arena.php';
 $arena = new Arena();
 
 $item = $arena->get_block($_GET['id']);
-print_r($block);
 ?>
 
 <!DOCTYPE html>
