@@ -17,7 +17,7 @@ Include the Arena class:
 include 'arena.php';
 ```
 
-and set a new instance:
+Then set a new instance:
 ```
 $arena = new Arena();
 ```
@@ -30,7 +30,7 @@ Your access token can be retrieved from http://dev.are.na .
 
 ## Channel
 
-Channels are containers for blocks (and sometimes other channels) with permissions meta information. Channels retrieved with this library all come in the form of objects, and their attributes accessible in the form of $this->attribute, (e.g. $channel->title). 
+Channels are organizational structures for blocks (and sometimes other channels) with permissions and other meta information. Channels retrieved with this library all come in the form of objects, and their attributes accessible in the form of $this->attribute, (e.g. $channel->title). 
 
 ### Retrieving a channel:
 
