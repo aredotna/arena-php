@@ -243,12 +243,13 @@ connections: [
 You can do basic POST operations with this library to create new Blocks for channels. 
 
 Note: To accomplish this you **must** provide an access token to authenticate the POST request.
-
+```
 <?php 
   $channel_slug = 'my-special-channel';
   $block_attrs = array('source' => 'http://imgs.xkcd.com/comics/poll_watching.png');
   $arena->create_block($channel_slug, $block_attrs);
 ?>
+```
 
 
 ## User
