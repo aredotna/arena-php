@@ -41,9 +41,9 @@ The Channel class can (and should) be extended to serve particular needs and goa
 At the moment, there is no API support for retrieving contents in a specific order, so for now we can sort the channel's contents after the fact (please keep in mind that if you are paginating, you are only going to be sorting the sum of what you retrieved).
 
 Options for sorting: 
-*'asc' (ascending by date)
-*'desc', (descending by date)
-*'position' (sorted by user determined position in the channel, this is default)
++ 'asc' (ascending by date)
++ 'desc', (descending by date)
++ 'position' (sorted by user determined position in the channel, this is default)
 
 ```
 <?php $channel->set_sort_order($direction) ?>
