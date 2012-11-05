@@ -21,7 +21,7 @@ $arena = new Arena();
 
 *Optional*: To authenticate your application (with your personal access token), open config.php (in the /lib folder) and set your auth token:
 ```
-$config['auth_token'] = 'YOUR AUTH TOKEN HERE'
+$config['access_token'] = 'YOUR AUTH TOKEN HERE'
 ```
 Your auth_token can be retrieved from http://dev.are.na .
 
