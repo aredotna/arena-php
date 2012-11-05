@@ -11,7 +11,7 @@
 
 Include the Arena class:
 ```
-include '../../arena.php';
+include 'arena.php';
 ```
 
 and set a new instance:
@@ -23,7 +23,7 @@ $arena = new Arena();
 ```
 $config['access_token'] = 'YOUR AUTH TOKEN HERE'
 ```
-Your auth_token can be retrieved from http://dev.are.na .
+Your access token can be retrieved from http://dev.are.na .
 
 ## Channel
 
@@ -103,9 +103,9 @@ The Channel class can (and should) be extended to serve particular needs and goa
 At the moment, there is no API support for retrieving contents in a specific order, so for now we can sort the channel's contents after the fact (please keep in mind that if you are paginating, you are only going to be sorting the sum of what you retrieved).
 
 Options for sorting: 
-+ 'asc' (ascending by date)
-+ 'desc', (descending by date)
-+ 'position' (sorted by user determined position in the channel, this is default)
++ *asc* (ascending by date)
++ *desc* (descending by date)
++ *position* (sorted by user determined position in the channel, this is default)
 
 ```
 <?php $channel->set_sort_order($direction) ?>
@@ -237,6 +237,19 @@ connections: [
 ]
 }
 ```
+
+### Creating a new block
+
+You can do basic POST operations with this library to create new Blocks for channels. 
+
+Note: To accomplish this you **must** provide an access token to authenticate the POST request.
+
+<?php 
+  $channel_slug = 'my-special-channel';
+  $block_attrs = array('source' => 'http://imgs.xkcd.com/comics/poll_watching.png');
+  $arena->create_block($channel_slug, $block_attrs);
+?>
+
 
 ## User
 
