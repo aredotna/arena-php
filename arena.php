@@ -42,9 +42,8 @@ class Arena
     return new Block($request->data);
   }
 
-  function select_block($channel_slug, $block_id){
-    $request = new Request("channels/$channel_slug/blocks/$block_id", array('PUT' => true));
-    return new Block($request->data);
+  function select_block($connection_id){
+    $request = new Request("connections/$connection_id/selection", array('PUT' => true));
   }
 
   function set_page() {

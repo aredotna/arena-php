@@ -6,7 +6,7 @@
  * (Canvas to POST code from: http://permadi.com/blog/2010/10/html5-saving-canvas-image-data-using-php-and-ajax/)
  */
 
-$collage_slug = 'drawings';
+$slug = 'drawings';
 
   if (isset($GLOBALS["HTTP_RAW_POST_DATA"])){
 
@@ -24,8 +24,7 @@ $collage_slug = 'drawings';
     include '../../../arena.php';
     $arena = new Arena();
 
-    $arena->create_block($collage_slug, array('source' => $url));
-    $arena->select_block($collage_slug, array('source' => $url));
-
+    $block = $arena->create_block($slug, array('source' => $url));
+    $arena->select_block($block->connection_id);
   }
 ?>
