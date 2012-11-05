@@ -19,7 +19,7 @@ and set a new instance:
 $arena = new Arena();
 ```
 
-Optional: To authenticate your application (with your personal access token), open config.php (in the /lib folder) and set your auth token:
+*Optional*: To authenticate your application (with your personal access token), open config.php (in the /lib folder) and set your auth token:
 ```
 $config['auth_token'] = 'YOUR AUTH TOKEN HERE'
 ```
