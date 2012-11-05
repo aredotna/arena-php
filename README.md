@@ -37,7 +37,7 @@ $channel = $arena->get_channel($slug, array('page' => $page, 'per' => $per));
 
 The Channel class can (and should) be extended to serve particular needs and goals, but there are a few convience methods included in this extremely early version of the library.
 
-#### Sorting a channel's contents
+### Sorting a channel's contents
 At the moment, there is no API support for retrieving contents in a specific order, so for now we can sort the channel's contents after the fact (please keep in mind that if you are paginating, you are only going to be sorting the sum of what you retrieved).
 
 Options for sorting: 
@@ -49,13 +49,13 @@ Options for sorting:
 <?php $channel->set_sort_order($direction) ?>
 ```
 
-#### Printing a list of authors (main author and all collaborators)
+### Printing a list of authors (main author and all collaborators)
 ```
 <?= $channel->authors_to_sentence(); ?>
 ```
 Example output: 'Charles Broskoski, John Michael Boling, Dena Yago, Damon Zucconi, J. Stuart Moore, and Emily Segal'
 
-#### Looping through channel contents (blocks and channels)
+### Looping through channel contents (blocks and channels)
 
 For the sake of simplicity, contents in a channel are all set to class 'Block'. The contents can be looped through using the each_item() method like so:
 ```
