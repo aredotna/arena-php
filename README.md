@@ -6,6 +6,9 @@
 * [Channel](#channel)
 * [Block](#block)
 * [User](#user)
+* [Resources](#resources)
+* [Contribute](#contribute)
+* [Acknowledgements](#acknowledgements)
 
 ## Setup
 
@@ -288,3 +291,18 @@ initials: "CB"
 ```
 
 This returns an object that contains an array of Channel objects (note: these channels do not have block content included in them, only base representations of the channels are returned).
+
+## Resources
+  
+  + [Examples](https://github.com/arenahq/arena-php-library/tree/master/examples)
+  + [dev.are.na](http://dev.are.na)
+
+## Contribute
+
+  Please fork and contribute! Also let us know if you are using the library on your site!
+
+  [arena@are.na](mailto:arena@are.na)
+
+## Acknowledgements
+
+  This project includes the wonderful [Underscore.php](http://brianhaveri.github.com/Underscore.php/) without which I would have never agreed to do this.
