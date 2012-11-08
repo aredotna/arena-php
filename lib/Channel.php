@@ -4,6 +4,7 @@
 * Arena::Channel
 */
 
+
 class Channel extends Arena
 {
   
