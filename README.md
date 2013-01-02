@@ -1,4 +1,4 @@
-# Arena PHP Library
+# Arena PHP
 ![COOL PHP](http://s3.amazonaws.com/arena_images/51397/original_9a676dd6d3b2e273028dc58cb8dcd7e2.png)
 ## Contents
 
