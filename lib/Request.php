@@ -19,7 +19,7 @@ class Request extends Arena
     
     // set X-AUTH-TOKEN if defined
     if ($config['access_token'] !== ''){
-      curl_setopt($this->request, CURLOPT_HTTPHEADER, array('HTTP_AUTHORIZATION: Bearer '.$config['access_token']));
+      curl_setopt($this->request, CURLOPT_HTTPHEADER, array('Authorization: Bearer '.$config['access_token']));
     }
 
     // set POST data
