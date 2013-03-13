@@ -294,7 +294,7 @@ This returns an object that contains an array of Channel objects (note: these ch
 
 ## Resources
   
-  + [Examples](https://github.com/arenahq/arena-php-library/tree/master/examples)
+  + [Examples](https://github.com/arenahq/arena-php/tree/master/examples)
   + [dev.are.na](http://dev.are.na)
 
 ## Contribute
