@@ -1,0 +1,11 @@
+{
+	"name": "arenahq/arena-php",
+	"description": "PHP interface to the Arena API",
+	"homepage": "https://github.com/arenahq/arena-php",
+	"license": "MIT",
+	"type": "library",
+
+	"autoload": {
+		"psr-4": {"": ""}
+	}
+}
