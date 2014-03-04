@@ -17,6 +17,11 @@ Include the Arena class:
 include 'arena.php';
 ```
 
+Or install with [Composer](https://getcomposer.org/) and require the autoload:
+```
+require 'vendor/autoload.php';
+```
+
 Then set a new instance:
 ```
 $arena = new Arena();
