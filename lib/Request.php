@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
 * Arena::Request
@@ -11,12 +11,12 @@ class Request extends Arena
   function __construct($path, $options = null, $params = null) {
     include 'config.php';
 
-    $base_url = 'http://api.are.na/v2/';
+    $base_url = 'https://api.are.na/v2/';
     $url = $base_url . $path . $this->set_url_params($options);
 
     $this->request = curl_init($url);
     curl_setopt($this->request, CURLOPT_RETURNTRANSFER, true);
-    
+
     // set X-AUTH-TOKEN if defined
     if ($config['access_token'] !== ''){
       curl_setopt($this->request, CURLOPT_HTTPHEADER, array('Authorization: Bearer '.$config['access_token']));
@@ -51,7 +51,7 @@ class Request extends Arena
 
   function set_url_params ($options) {
     if($options !== null) {
-      
+
       $str = "?";
       $idx = 1;
       $options_length = count($options);
