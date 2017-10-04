@@ -23,17 +23,15 @@ class Request extends Arena
     }
 
     // set POST data
-    if($options['POST']){
-      foreach($params as $key=>$value) { $params_string .= $key.'='.$value.'&'; }
-      rtrim($fields_string, '&');
+    if(! empty($options['POST'])){
+      $params_string = http_build_query($params);
       curl_setopt($this->request, CURLOPT_POST, count($params));
       curl_setopt($this->request, CURLOPT_POSTFIELDS, $params_string);
     }
 
-    if($options['PUT']){
+    if(! empty($options['PUT'])){
       if($params != null){
-        foreach($params as $key=>$value) { $params_string .= $key.'='.$value.'&'; }
-        rtrim($fields_string, '&');
+        $params_string = http_build_query($params);
         curl_setopt($this->request, CURLOPT_POSTFIELDS, $params_string);
       }
       curl_setopt($this->request, CURLOPT_CUSTOMREQUEST, "PUT");
